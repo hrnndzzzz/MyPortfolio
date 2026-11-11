@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JASPER ROBIN HERNANDEZ</title>
+<meta name="description" content="SmartEvent: a mobile app capstone project for La Consolacion University Philippines.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!--
+  Snapshots: put screenshots in a folder named smartevent/ next to this file, then
+  replace each <span class="label">…</span> inside a .phone with an image, e.g.
+  <img src="smartevent/01-dashboard.png" alt="SmartEvent dashboard screen">
+  Expected names: 01-dashboard.png, 02-proposal.png, 03-receipt.png, 04-inventory.png, 05-reports.png
+-->
+
+<header class="hero" id="top">
+  <nav class="simple" aria-label="Main">
+    <ul>
+      <li><a class="label" href="index.html#projects">← All work</a></li>
+      <li><a class="label" href="index.html#contact">Contact</a></li>
+      <li><a class="label" href="resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-cream" aria-hidden="true"></div>
+  <div class="hero-wave" aria-hidden="true"></div>
+  <h1 class="display headline long">SmartEvent</h1>
+  <div class="display headline long on-blob" aria-hidden="true">SmartEvent</div>
+
+  <p class="label side l1">Capstone Project<br>Mobile app</p>
+  <p class="label side l2">Lead Developer<br>Backend</p>
+  <p class="label side r1">Capstone<br>2026</p>
+
+  <div class="hero-phone">
+    <div class="phone" role="img" aria-label="SmartEvent dashboard screen placeholder"><span class="label">Dashboard snapshot</span></div>
+  </div>
+
+  <a class="cta-circle" href="#snapshots">See<br>screens</a>
+  <div class="stripes" aria-hidden="true"></div>
+</header>
+
+<main>
+  <section id="overview" aria-labelledby="overview-title">
+    <h2 class="display section-title" id="overview-title">Overview</h2>
+    <div class="overview-grid">
+      <div>
+        <p>SmartEvent is a mobile app for student organizations at La Consolacion University Philippines. It covers the whole life of a campus event: proposals and multi-step approvals, budgets and expenses with receipt scanning, event-linked inventory, and financial reports. It replaces the spreadsheet-based tracking organizations used before, with automatic expense deductions and low-balance alerts.</p>
+        <p>As Lead Developer I focused on the backend: a FastAPI REST API on Supabase PostgreSQL, role-based access for seven roles scoped by department and organization, and integrations for receipt OCR (Gemini), file storage and email (Resend). The backend is covered by 200 automated tests.</p>
+      </div>
+      <div>
+        <dl class="facts">
+          <dt class="label">Role</dt><dd>Lead Developer — Backend</dd>
+          <dt class="label">Type</dt><dd>Capstone project, CITE, 2026</dd>
+          <dt class="label">Platform</dt><dd>Mobile (Flutter)</dd>
+          <dt class="label">Mobile</dt><dd><ul class="tags"><li>Flutter</li><li>Dart</li><li>Provider</li><li>SQLite</li></ul></dd>
+          <dt class="label">Backend</dt><dd><ul class="tags"><li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>JWT + Argon2 auth</li><li>pytest</li></ul></dd>
+          <dt class="label">Data &amp; services</dt><dd><ul class="tags"><li>PostgreSQL</li><li>Supabase</li><li>Gemini API (OCR)</li><li>Resend</li></ul></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="snapshots" aria-labelledby="snapshots-title">
+    <h2 class="display section-title" id="snapshots-title">Snapshots</h2>
+    <ul class="shots">
+      <li><figure><div class="phone" role="img" aria-label="Dashboard screen placeholder"><span class="label">Snapshot 01</span></div><figcaption class="label">Dashboard</figcaption></figure></li>
+      <li><figure><div class="phone" role="img" aria-label="Event proposal screen placeholder"><span class="label">Snapshot 02</span></div><figcaption class="label">Event proposal</figcaption></figure></li>
+      <li><figure><div class="phone" role="img" aria-label="Receipt scan screen placeholder"><span class="label">Snapshot 03</span></div><figcaption class="label">Receipt scan</figcaption></figure></li>
+      <li><figure><div class="phone" role="img" aria-label="Inventory screen placeholder"><span class="label">Snapshot 04</span></div><figcaption class="label">Inventory</figcaption></figure></li>
+      <li><figure><div class="phone" role="img" aria-label="Reports screen placeholder"><span class="label">Snapshot 05</span></div><figcaption class="label">Reports</figcaption></figure></li>
+    </ul>
+  </section>
+
+  <section id="features" aria-labelledby="features-title">
+    <h2 class="display section-title" id="features-title">Key features</h2>
+    <div class="features">
+      <div><span class="display">01</span><h3>Event approvals</h3><p>SmartEvent digitalizes Student Activity Proposals that can generate a digital trail as well as from filling out forms digitally to have a ready to print generated pdf file. Proposals move through adviser, admin and institutional signatories in order. Nobody can approve their own request, and rejected proposals can be fixed and resubmitted with their history kept.</p></div>
+      <div><span class="display">02</span><h3>Finance &amp; receipts</h3><p>Treasurers log expenses and income against category and event budgets. Receipts are scanned with Gemini OCR and checked for duplicates before review.</p></div>
+      <div><span class="display">03</span><h3>Inventory &amp; reports</h3><p>Event-linked stock with a full movement ledger, plus weekly, semester and school-year financial reports exported as PDF, CSV or HTML.</p></div>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="cta-title">
+    <h2 class="display section-title" id="cta-title">Like what you see?</h2>
+    <p>Want something like this built, or want to talk about how it works?</p>
+    <div class="contact-row">
+      <a class="btn green" href="index.html#contact">Let's talk</a>
+      <a class="btn light" href="index.html#projects">Back to all work</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="stripes" aria-hidden="true"></div>
+  <div class="row label"><span>© 2026 Jasper Robin Hernandez</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<script>
+  const toTop = document.querySelector('.to-top');
+  addEventListener('scroll', () => toTop.classList.toggle('show', scrollY > innerHeight * .6), { passive: true });
+</script>
+</body>
+</html>
