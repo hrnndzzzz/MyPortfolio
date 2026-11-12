@@ -30,9 +30,9 @@
   <h1 class="display headline">Developer</h1>
   <div class="display headline on-blob" aria-hidden="true">Developer</div>
 
-  <p class="label side l1">Jasper Robin Hernandez<br>Software Developer (Back-end)</p>
-  <p class="label side l2">Open for<br>OJT</p>
-  <p class="label side r1">Based in<br>Pampanga, PH</p>
+  <p class="label side l1"><strong>Jasper Robin Hernandez</strong>Software Developer (Back&#8209;end)</p>
+  <p class="label side l2">Currently<strong>Open for OJT</strong></p>
+  <p class="label side r1">Based in<strong>Pampanga, PH</strong></p>
 
   <!-- shortcut: placeholder shape, swap for <img src="me.png" alt="Jasper Robin Hernandez"> (transparent cut-out) -->
   <div class="portrait" role="img" aria-label="Portrait placeholder"><span class="label">Your cut-out photo goes here</span></div>
@@ -49,11 +49,15 @@
         <div class="phone" role="img" aria-label="SmartEvent app screen placeholder"><span class="label">App snapshot</span></div>
       </div>
       <div class="featured-body">
+       <div class="featured-main">
         <p class="label featured-eyebrow">Capstone project · 2026 · Mobile app</p>
         <h3>SmartEvent</h3>
         <p>A mobile app that lets student organizations at La Consolacion University Philippines run campus events end to end: event proposals with multi-step approvals, budgets and expenses with receipt scanning, event-linked inventory, and financial reports. It replaces the spreadsheets organizations used to track their operations, with automatic expense deductions and low-balance alerts.</p>
         <p class="role"><span class="label">My role</span>Lead Developer — Backend</p>
         <p>I led development and focused on the backend: the FastAPI REST API, the PostgreSQL schema and migrations, role-based access for seven user roles, and the OCR, storage and email integrations.</p>
+        <div class="card-links"><a class="btn dark" href="smartevent.html">Take A Look</a><a class="btn light" href="#">GitHub</a></div>
+       </div>
+       <div class="featured-side">
         <dl class="facts">
           <dt class="label">Mobile</dt><dd><ul class="tags"><li>Flutter</li><li>Dart</li><li>Provider</li><li>SQLite</li></ul></dd>
           <dt class="label">Backend</dt><dd><ul class="tags"><li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>JWT + Argon2 auth</li><li>pytest</li></ul></dd>
@@ -64,7 +68,7 @@
           <li>Receipt OCR with duplicate detection, plus PDF, CSV and HTML reports</li>
           <li>200 automated backend tests</li>
         </ul>
-        <div class="card-links"><a class="btn dark" href="smartevent.html">Take A Look</a><a class="btn light" href="#">GitHub</a></div>
+       </div>
       </div>
     </article>
   </section>
@@ -173,7 +177,9 @@
   viewer.querySelector('button').addEventListener('click', () => viewer.close());
   viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
   const toTop = document.querySelector('.to-top');
-  addEventListener('scroll', () => toTop.classList.toggle('show', scrollY > innerHeight * .6), { passive: true });
+  // hidden at the top and on the last section, where the footer has its own Back to top link
+  const lastSection = document.getElementById('contact');
+  addEventListener('scroll', () => toTop.classList.toggle('show', scrollY > innerHeight * .6 && lastSection.getBoundingClientRect().top > innerHeight * .5), { passive: true });
   const nav = document.querySelector('nav'), btn = nav.querySelector('.menu-btn');
   btn.addEventListener('click', () => btn.setAttribute('aria-expanded', nav.classList.toggle('open')));
   nav.querySelectorAll('ul a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); }));

@@ -33,9 +33,9 @@
   <h1 class="display headline long">SmartEvent</h1>
   <div class="display headline long on-blob" aria-hidden="true">SmartEvent</div>
 
-  <p class="label side l1">Capstone Project<br>Mobile app</p>
-  <p class="label side l2">Lead Developer<br>Backend</p>
-  <p class="label side r1">Capstone<br>2026</p>
+  <p class="label side l1"><strong>Capstone Project</strong>Mobile app</p>
+  <p class="label side l2"><strong>Lead Developer</strong>Backend</p>
+  <p class="label side r1">Capstone<strong>2026</strong></p>
 
   <div class="hero-phone">
     <div class="phone" role="img" aria-label="SmartEvent dashboard screen placeholder"><span class="label">Dashboard snapshot</span></div>
@@ -103,7 +103,9 @@
 <a class="to-top" href="#top" aria-label="Back to top">↑</a>
 <script>
   const toTop = document.querySelector('.to-top');
-  addEventListener('scroll', () => toTop.classList.toggle('show', scrollY > innerHeight * .6), { passive: true });
+  // hidden at the top and on the last section, where the footer has its own Back to top link
+  const lastSection = document.getElementById('contact');
+  addEventListener('scroll', () => toTop.classList.toggle('show', scrollY > innerHeight * .6 && lastSection.getBoundingClientRect().top > innerHeight * .5), { passive: true });
 </script>
 </body>
 </html>
