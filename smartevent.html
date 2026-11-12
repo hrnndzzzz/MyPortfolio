@@ -12,13 +12,6 @@
 </head>
 <body>
 
-<!--
-  Snapshots: put screenshots in a folder named smartevent/ next to this file, then
-  replace each <span class="label">…</span> inside a .phone with an image, e.g.
-  <img src="smartevent/01-dashboard.png" alt="SmartEvent dashboard screen">
-  Expected names: 01-dashboard.png, 02-proposal.png, 03-receipt.png, 04-inventory.png, 05-reports.png
--->
-
 <header class="hero" id="top">
   <nav class="simple" aria-label="Main">
     <ul>
@@ -38,7 +31,7 @@
   <p class="label side r1">Capstone<strong>2026</strong></p>
 
   <div class="hero-phone">
-    <div class="phone" role="img" aria-label="SmartEvent dashboard screen placeholder"><span class="label">Dashboard snapshot</span></div>
+    <div class="phone"><img src="smartevent/01-dashboard.webp" alt="SmartEvent dashboard screen" width="800" height="1709"></div>
   </div>
 
   <a class="cta-circle" href="#snapshots">See<br>screens</a>
@@ -68,12 +61,36 @@
 
   <section id="snapshots" aria-labelledby="snapshots-title">
     <h2 class="display section-title" id="snapshots-title">Snapshots</h2>
+    <p class="shots-intro">Real screens from the app. Tap any phone to enlarge.</p>
     <ul class="shots">
-      <li><figure><div class="phone" role="img" aria-label="Dashboard screen placeholder"><span class="label">Snapshot 01</span></div><figcaption class="label">Dashboard</figcaption></figure></li>
-      <li><figure><div class="phone" role="img" aria-label="Event proposal screen placeholder"><span class="label">Snapshot 02</span></div><figcaption class="label">Event proposal</figcaption></figure></li>
-      <li><figure><div class="phone" role="img" aria-label="Receipt scan screen placeholder"><span class="label">Snapshot 03</span></div><figcaption class="label">Receipt scan</figcaption></figure></li>
-      <li><figure><div class="phone" role="img" aria-label="Inventory screen placeholder"><span class="label">Snapshot 04</span></div><figcaption class="label">Inventory</figcaption></figure></li>
-      <li><figure><div class="phone" role="img" aria-label="Reports screen placeholder"><span class="label">Snapshot 05</span></div><figcaption class="label">Reports</figcaption></figure></li>
+      <li><figure>
+        <a class="shot-view" href="smartevent/01-dashboard.webp"><div class="phone"><img src="smartevent/01-dashboard.webp" alt="SmartEvent dashboard: 28 events, budget left, items awaiting review and low stock" loading="lazy" width="800" height="1709"></div></a>
+        <figcaption><span class="display shot-num">01</span><strong class="shot-title">Dashboard</strong><span class="shot-desc">Events, budget left, pending reviews and low stock at a glance.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a class="shot-view" href="smartevent/02-proposal-start.webp"><div class="phone"><img src="smartevent/02-proposal-start.webp" alt="Start of the Student Activity Proposal form, choosing in campus, off campus or online" loading="lazy" width="800" height="1709"></div></a>
+        <figcaption><span class="display shot-num">02</span><strong class="shot-title">Start a proposal</strong><span class="shot-desc">The university's activity proposal form, digitized: in campus, off campus or online.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a class="shot-view" href="smartevent/03-approval-status.webp"><div class="phone"><img src="smartevent/03-approval-status.webp" alt="Approval status of an event: adviser review and admin approval done, now with the signatories" loading="lazy" width="800" height="1708"></div></a>
+        <figcaption><span class="display shot-num">03</span><strong class="shot-title">Approval status</strong><span class="shot-desc">Adviser, admin, then signatories, with the review history kept.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a class="shot-view" href="smartevent/04-proposal-form.webp"><div class="phone"><img src="smartevent/04-proposal-form.webp" alt="Proposal form with six parts marked Filled in, Started or Not yet, and a print button" loading="lazy" width="800" height="1708"></div></a>
+        <figcaption><span class="display shot-num">04</span><strong class="shot-title">Proposal form</strong><span class="shot-desc">Six parts tracked from "Filled in" to "Not yet", printable for signing.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a class="shot-view" href="smartevent/05-money.webp"><div class="phone"><img src="smartevent/05-money.webp" alt="Money screen: allocated, spent, left and pending amounts with links to expenses, receipts, income and budget categories" loading="lazy" width="800" height="1710"></div></a>
+        <figcaption><span class="display shot-num">05</span><strong class="shot-title">Money</strong><span class="shot-desc">Allocated, spent, left and pending, plus expenses, receipts and income.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a class="shot-view" href="smartevent/06-reports.webp"><div class="phone"><img src="smartevent/06-reports.webp" alt="Financial reports with allocation versus actual, expense distribution and income source charts" loading="lazy" width="800" height="1708"></div></a>
+        <figcaption><span class="display shot-num">06</span><strong class="shot-title">Financial reports</strong><span class="shot-desc">Allocation vs actual, expense distribution and where the money came from.</span></figcaption>
+      </figure></li>
+      <li><figure>
+        <a class="shot-view" href="smartevent/07-inventory.webp"><div class="phone"><img src="smartevent/07-inventory.webp" alt="Inventory grouped by location, with stock counts and status filters" loading="lazy" width="800" height="1706"></div></a>
+        <figcaption><span class="display shot-num">07</span><strong class="shot-title">Inventory</strong><span class="shot-desc">Stock by location, changed only through recorded movements.</span></figcaption>
+      </figure></li>
     </ul>
   </section>
 
@@ -101,7 +118,21 @@
   <div class="row label"><span>© 2026 Jasper Robin Hernandez</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<dialog class="cert-viewer shot-viewer" aria-labelledby="shot-viewer-title">
+  <div class="cert-viewer-bar"><span class="label" id="shot-viewer-title"></span><button type="button" aria-label="Close">×</button></div>
+  <img alt="">
+</dialog>
 <script>
+  // Snapshot links open the screenshot in a pop-up; without JS they just open the image file.
+  const viewer = document.querySelector('.shot-viewer'), viewerImg = viewer.querySelector('img');
+  document.querySelectorAll('.shot-view').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    viewer.querySelector('#shot-viewer-title').textContent = 'SmartEvent · ' + a.closest('figure').querySelector('.shot-title').textContent;
+    viewerImg.src = a.href; viewerImg.alt = a.querySelector('img').alt;
+    viewer.showModal();
+  }));
+  viewer.querySelector('button').addEventListener('click', () => viewer.close());
+  viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
   const toTop = document.querySelector('.to-top');
   // hidden at the top and on the last section, where the footer has its own Back to top link
   const lastSection = document.getElementById('contact');

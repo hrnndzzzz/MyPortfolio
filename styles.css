@@ -34,12 +34,12 @@ nav ul a:hover { text-decoration: underline 2px; text-underline-offset: 4px; }
 .headline.on-blob { color: var(--green); clip-path: var(--blob); }
 .portrait {
   position: absolute; left: 50%; bottom: 28px; translate: -50% 0; z-index: 2;
-  width: clamp(220px, 34vw, 440px); aspect-ratio: 3 / 4;
-  border-radius: 999px 999px 24px 24px; background: var(--green);
-  display: grid; place-items: center; text-align: center; color: var(--cream);
-  box-shadow: 0 0 0 6px var(--ink);
+  /* grows on big screens, but never taller than the hero minus the nav area */
+  width: min(clamp(220px, 34vw, 560px), calc((max(100svh, 640px) - 150px) * .75)); aspect-ratio: 3 / 4;
 }
-.portrait span { opacity: .8; max-width: 14ch; }
+/* Backdrop card from chest down: the photo's cut right arm and cut legs end on its outline, so they read as leaving the frame. */
+.portrait::before { content: ""; position: absolute; inset: 36% 0 0 0; background: var(--lime); border-radius: 40px 40px 0 0; box-shadow: 0 0 0 6px var(--ink); }
+.portrait img { position: relative; display: block; width: 100%; height: 100%; object-fit: contain; }
 .side { position: absolute; z-index: 3; line-height: 1.4; font-size: clamp(.9rem, 1.3vw, 1.35rem); font-weight: 800; max-width: calc(33vw - clamp(16px, 4vw, 48px) - 24px); }
 .side strong { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(1.3rem, 2.2vw, 2.4rem); letter-spacing: .03em; line-height: 1.05; margin-block: 2px; }
 .side.l1 { left: clamp(16px, 4vw, 48px); top: 48%; }
@@ -151,7 +151,7 @@ nav.simple ul { display: flex; margin-right: 0; }
 .hero-phone { position: absolute; left: 50%; bottom: 56px; translate: -50% 0; rotate: -5deg; z-index: 2; width: clamp(150px, 18vw, 240px); }
 .phone { aspect-ratio: 9 / 19.5; border: 6px solid var(--ink); border-radius: 36px; background: var(--cream); color: var(--green); display: grid; place-items: center; text-align: center; overflow: hidden; }
 .phone span { max-width: 12ch; }
-.phone img { width: 100%; height: 100%; object-fit: cover; }
+.phone img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 #overview { background: var(--cream); }
 #overview .section-title { color: var(--orange); }
 .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 48px; }
@@ -161,9 +161,23 @@ nav.simple ul { display: flex; margin-right: 0; }
 .facts dd { font-weight: 600; }
 #snapshots { background: var(--green); color: var(--cream); }
 #snapshots .section-title { color: var(--lime); }
-.shots { display: flex; gap: 24px; list-style: none; padding: 0; }
-.shots li { flex: 1 1 0; min-width: 0; }
-.shots figcaption { margin-top: 14px; text-align: center; }
+/* Snapshots "sticker wall": 4 + 3 phones, staggered and tilted, each with a coloured hard shadow */
+.shots-intro { font-size: clamp(1.05rem, .9rem + .35vw, 1.3rem); margin: -8px 0 40px; opacity: .9; }
+.shots { display: flex; flex-wrap: wrap; justify-content: center; gap: 56px clamp(24px, 3vw, 48px); list-style: none; padding: 0; max-width: 1180px; margin-inline: auto; }
+.shots li { flex: 0 0 calc(25% - 36px); max-width: 250px; min-width: 0; --shadow: var(--lime); }
+.shots li:nth-child(3n+2) { --shadow: var(--orange); }
+.shots li:nth-child(3n) { --shadow: var(--cream); }
+.shots li:nth-child(even) { margin-top: 36px; }
+.shot-view { display: block; text-decoration: none; color: inherit; border-radius: 36px; }
+.shot-view:focus-visible { outline: 3px solid var(--lime); outline-offset: 8px; }
+.shots .phone { rotate: -3deg; box-shadow: 10px 10px 0 var(--shadow); transition: rotate .25s, translate .25s, box-shadow .25s; cursor: zoom-in; }
+.shots li:nth-child(even) .phone { rotate: 2.5deg; }
+.shot-view:hover .phone, .shot-view:focus-visible .phone { rotate: 0deg; translate: 0 -8px; box-shadow: 16px 16px 0 var(--shadow); }
+.shots figcaption { margin-top: 24px; }
+.shot-num { display: block; font-size: 2.6rem; line-height: 1; color: var(--shadow); }
+.shot-title { display: block; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.5rem; letter-spacing: .02em; margin: 6px 0; }
+.shot-desc { display: block; line-height: 1.5; opacity: .85; }
+.shot-viewer img { max-height: 86vh; }
 #features .section-title { color: var(--lime); }
 .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 40px; }
 .features .display { font-size: 4rem; color: var(--lime); }
@@ -187,13 +201,16 @@ nav.simple ul { display: flex; margin-right: 0; }
   .side.l2 { display: none; }
   .side { max-width: 58vw; }
   .portrait { width: 62vw; }
-  .cta-circle { bottom: 48px; }
+  /* sits beside the head, just above the photo's card (card height = 64% of the 62vw x 4/3 portrait) */
+  .cta-circle { width: 92px; bottom: calc(28px + 62vw * 4 / 3 * .64 + 14px); right: 12px; font-size: 1.1rem; }
   .cert { grid-template-columns: 1fr; gap: 10px; justify-items: start; }
   .cert-side { justify-content: flex-start; }
   .featured { grid-template-columns: 1fr; }
   .featured-shot .phone { max-width: 200px; }
-  .shots { overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; }
-  .shots li { flex: 0 0 62vw; scroll-snap-align: center; }
+  /* phones: one swipe rail; padding keeps the tilt and shadow from being clipped */
+  .shots { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; padding: 16px 12px 24px; gap: 28px; max-width: none; }
+  .shots li { flex: 0 0 62vw; max-width: none; scroll-snap-align: center; }
+  .shots li:nth-child(even) { margin-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
