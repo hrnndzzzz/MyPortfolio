@@ -189,6 +189,21 @@ nav.simple ul { display: flex; margin-right: 0; }
 .to-top.show { opacity: 1; visibility: visible; translate: 0 0; }
 .to-top:hover { translate: 0 -3px; }
 
+/* ---------- motion ---------- */
+/* Scroll compress / decompress (motion.js adds .reveal, toggles .in). Hidden only when JS runs, so the page never stays blank.
+   Scaled from the top edge with no vertical shift: that edge is what the observer watches, so the state can't flicker. */
+.js .reveal { opacity: 0; transform: scale(.94, .6); transform-origin: top; transition: opacity .5s ease-out, transform .5s cubic-bezier(.2, .7, .2, 1); }
+.js .reveal.in { opacity: 1; transform: none; transition-delay: var(--d, 0ms); }
+/* Hero entrance on load. "backwards" so hover transforms (View work circle) work once it ends. */
+@keyframes rise { from { opacity: 0; transform: translateY(40px); } }
+@keyframes fade { from { opacity: 0; } }
+.headline { animation: rise .8s cubic-bezier(.2, .7, .2, 1) backwards; }
+.portrait, .hero-phone { animation: rise .8s .2s cubic-bezier(.2, .7, .2, 1) backwards; }
+.side, .cta-circle { animation: fade .6s .5s ease-out backwards; }
+.side.r1 { animation-delay: .6s; }
+.side.l2 { animation-delay: .7s; }
+.cta-circle { animation-delay: .8s; }
+
 /* ---------- mobile ---------- */
 @media (max-width: 760px) {
   .menu-btn { display: block; background: none; border: 0; padding: 8px; cursor: pointer; }
@@ -214,5 +229,6 @@ nav.simple ul { display: flex; margin-right: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
 }
