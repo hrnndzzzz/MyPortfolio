@@ -4,12 +4,3 @@
   </a>
 </p>
 
-Source of my portfolio site: `index.html` (home) and `smartevent.html` (SmartEvent case study), plain HTML, CSS and JS, no build step.
-
-Preview locally:
-
-```bash
-python -m http.server 5500
-```
-
-then open http://localhost:5500.
